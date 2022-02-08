@@ -23,8 +23,8 @@ function rehydrateData() {
   const {
     elements: { email, message },
   } = formRef;
-  email.value = parsedData?.email || '';
-  message.value = parsedData?.message || '';
+  email.value = (parsedData && parsedData.email) || '';
+  message.value = (parsedData && parsedData.message) || '';
 }
 rehydrateData();
 
