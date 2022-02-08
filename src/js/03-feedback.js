@@ -8,14 +8,13 @@ formRef.addEventListener('input', throttle(handleInput, 500));
 
 function handleInput(e) {
   const { name, value } = e.target;
-  const parsedData = storage.get(STORAGE_KEY) ?? {};
+  const parsedData = storage.get(STORAGE_KEY) || {};
   const formData = {
     ...parsedData,
     [name]: value,
   };
 
   storage.save(STORAGE_KEY, formData);
-  console.log('~ formData', formData);
 }
 
 function rehydrateData() {
@@ -23,8 +22,8 @@ function rehydrateData() {
   const {
     elements: { email, message },
   } = formRef;
-  email.value = (parsedData && parsedData.email) || '';
-  message.value = (parsedData && parsedData.message) || '';
+  email.value = parsedData?.email || '';
+  message.value = parsedData?.message || '';
 }
 rehydrateData();
 
