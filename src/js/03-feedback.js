@@ -19,10 +19,9 @@ function handleInput(e) {
 
 function rehydrateData() {
   const parsedData = storage.get(STORAGE_KEY);
-  const form = e.currentTarget;
   const {
     elements: { email, message },
-  } = form;
+  } = formRef;
   email.value = parsedData?.email || '';
   message.value = parsedData?.message || '';
 }
