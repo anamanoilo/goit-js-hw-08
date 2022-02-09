@@ -19,9 +19,10 @@ function handleInput(e) {
 
 function rehydrateData() {
   const parsedData = storage.get(STORAGE_KEY);
+  const form = e.currentTarget;
   const {
     elements: { email, message },
-  } = formRef;
+  } = form;
   email.value = parsedData?.email || '';
   message.value = parsedData?.message || '';
 }
@@ -44,3 +45,25 @@ function submitHandler(e) {
   storage.remove(STORAGE_KEY);
 }
 formRef.addEventListener('submit', submitHandler);
+
+// ------------------------alternative------------------------------
+
+// function submitHandler(e) {
+//   e.preventDefault();
+//   const form = e.currentTarget;
+//   const {
+//     elements: { email, message },
+//   } = form;
+//   if (!email.value || !message.value) {
+//     alert('Please fill in all the fields!');
+//     return;
+//   }
+//   const finalData = {
+//     [email.name]: email.value,
+//     [message.name]: message.value,
+//   };
+//   console.log(finalData);
+//   form.reset();
+//   storage.remove(STORAGE_KEY);
+// }
+// formRef.addEventListener('submit', submitHandler);
