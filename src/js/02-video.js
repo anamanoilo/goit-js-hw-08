@@ -11,7 +11,7 @@ const timeupdateHandler = function (data) {
 };
 
 player.on('timeupdate', throttle(timeupdateHandler, 1000));
-player.setCurrentTime(storage.get(CURRENT_TIME));
+player.setCurrentTime(storage.get(CURRENT_TIME) || 0);
 
 //alternative
 
